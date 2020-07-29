@@ -5,6 +5,7 @@ import News.Class.Employee;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class StreamSql {
     public static void main(String[] args) {
@@ -89,5 +90,25 @@ public class StreamSql {
         });
         employees.forEach(System.out::println);
 
+        boolean isExistAgeThan70 = false;
+        for(Employee employee:employees){
+            if(employee.getAge() > 70){
+                isExistAgeThan70 = true;
+                break;
+            }
+        }
+        boolean isExistAgeThan71 = employees.stream().anyMatch(Employee.ageGreaterThan70);
+        boolean isExistAgeThan72 = employees.stream().anyMatch(e -> e.getAge() > 70);
+
+        //都符合
+        boolean isExistAgeThan10 = employees.stream().allMatch(e -> e.getAge() > 10);
+        //都不符合
+        boolean isExistAgeLess18 = employees.stream().noneMatch(e -> e.getAge() < 18);
+
+        System.out.println("4444");
+        //查找第一个符合的findFirst（）
+        Optional<Employee> employeeOptional
+                =  employees.stream().filter(e -> e.getAge() > 40).findFirst();
+        System.out.println(employeeOptional.get());
     }
 }
