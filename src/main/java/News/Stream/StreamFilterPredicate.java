@@ -1,4 +1,6 @@
-package News.Class;
+package News.Stream;
+
+import News.Class.Employee;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,8 +25,22 @@ public class StreamFilterPredicate {
         List<Employee> filtered = employees.stream()
                 .filter(e -> e.getAge() > 70 && e.getGender().equals("M"))
                 .collect(Collectors.toList());
-
         System.out.println(filtered);
+        //与and
+        List<Employee> filtered1 = employees.stream()
+                .filter(Employee.ageGreaterThan70.and(Employee.genderM))
+                .collect(Collectors.toList());
+        System.out.println(filtered1);
+        //或or
+        List<Employee> filtered2 = employees.stream()
+                .filter(Employee.ageGreaterThan70.or(Employee.genderM))
+                .collect(Collectors.toList());
+        System.out.println(filtered2);
+        //非negate()
+        List<Employee> filtered3 = employees.stream()
+                .filter(Employee.ageGreaterThan70.or(Employee.genderM).negate())
+                .collect(Collectors.toList());
+        System.out.println(filtered3);
 
     }
 
