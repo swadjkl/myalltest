@@ -1,15 +1,15 @@
 package News;
 
 /*
-* ´«Í³µÄoop
-* */
+ * ï¿½ï¿½Í³ï¿½ï¿½oop
+ * */
 /*
 public class LambdaDemo {
-    //º¯Êý¶¨Òå
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void printSomething(String something) {
         System.out.println(something);
     }
-    //Í¨¹ý´´½¨¶ÔÏóµ÷ÓÃº¯Êý
+    //Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½
     public static void main(String[] args) {
         LambdaDemo demo = new LambdaDemo();
         String something = "I am learning Lambda";
@@ -19,31 +19,32 @@ public class LambdaDemo {
 */
 
 public class LambdaDemo {
-    //³éÏó¹¦ÄÜ½Ó¿Ú
-    interface Printer {
-        void print(String val);
+    public static void main(String[] args) {
+        LambdaDemo demo = new LambdaDemo();
+        String something = "I am using a Functional interface";
+        //Êµï¿½ï¿½Printerï¿½Ó¿ï¿½
+//        Printer printer = new Printer() {
+//            @Override
+//            public void print(String val) {
+//                //ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½Ó¡
+//                System.out.println(val);
+//            }
+//        };
+        //Êµï¿½ï¿½Printerï¿½Ó¿Ú£ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lambdaï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ë£©
+//        Printer printer = (String toPrint)->{System.out.println(toPrint);};
+//        demo.printSomething(something, printer);
+        //ï¿½ï¿½ï¿½ï¿½ï¿½
+        Printer printer = toPrint->System.out.println(toPrint);
+        demo.printSomething(something,toPrint->System.out.println(toPrint));
     }
-    //Í¨¹ý²ÎÊý´«µÝ¹¦ÄÜ½Ó¿Ú
+
+    //Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¹ï¿½ï¿½Ü½Ó¿ï¿½
     public void printSomething(String something, Printer printer) {
         printer.print(something);
     }
 
-    public static void main(String[] args) {
-        LambdaDemo demo = new LambdaDemo();
-        String something = "I am using a Functional interface";
-        //ÊµÏÖPrinter½Ó¿Ú
-//        Printer printer = new Printer() {
-//            @Override
-//            public void print(String val) {
-//                //¿ØÖÆÌ¨´òÓ¡
-//                System.out.println(val);
-//            }
-//        };
-        //ÊµÏÖPrinter½Ó¿Ú£¨Çë¹Ø×¢ÏÂÃæÕâÐÐlambda±í´ïÊ½´úÂë£©
-//        Printer printer = (String toPrint)->{System.out.println(toPrint);};
-//        demo.printSomething(something, printer);
-        //¼ò½à°æµÄ
-        Printer printer = toPrint->System.out.println(toPrint);
-        demo.printSomething(something,toPrint->System.out.println(toPrint));
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ü½Ó¿ï¿½
+    interface Printer {
+        void print(String val);
     }
 }

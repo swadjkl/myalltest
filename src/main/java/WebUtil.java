@@ -1,6 +1,7 @@
-import javax.xml.namespace.QName;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
+
+import javax.xml.namespace.QName;
 
 public class WebUtil {
     public static final String url = "http://10.1.0.62/webService/EASWebService.asmx";
@@ -11,32 +12,32 @@ public class WebUtil {
     }
 
     public static String sendWebservice(Object[] params, String url) {
-        String soapaction = "http://tempuri.org/"; // ÓòÃû£¬ÕâÊÇÔÚserver¶¨ÒåµÄ
-        String operationName = "GetStandardWelfare";// µ÷ÓÃ·½·¨Ãû
+        String soapaction = "http://tempuri.org/"; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½serverï¿½ï¿½ï¿½ï¿½ï¿½
+        String operationName = "GetStandardWelfare";// ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½
         Service service = new Service();
         String ret = "";
         try {
-            Call call = (Call)service.createCall();
+            Call call = (Call) service.createCall();
             call.setTargetEndpointAddress(url);
-            call.setOperationName(new QName(soapaction, operationName)); // ÉèÖÃÒªµ÷ÓÃÄÄ¸ö·½·¨
-            call.addParameter(new QName(soapaction, "StaffCode"), // ÉèÖÃÒª´«µÝµÄ²ÎÊý(¹¤ºÅ)
+            call.setOperationName(new QName(soapaction, operationName)); // ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½
+            call.addParameter(new QName(soapaction, "StaffCode"), // ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ÝµÄ²ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
                     org.apache.axis.encoding.XMLType.XSD_STRING,
                     javax.xml.rpc.ParameterMode.IN);
-            call.addParameter(new QName(soapaction, "FYear"), // ÉèÖÃÒª´«µÝµÄ²ÎÊý£¨Äê·Ý£©
+            call.addParameter(new QName(soapaction, "FYear"), // ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ÝµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½
                     org.apache.axis.encoding.XMLType.XSD_STRING,
                     javax.xml.rpc.ParameterMode.IN);
-            call.addParameter(new QName(soapaction, "FMonth"), // ÉèÖÃÒª´«µÝµÄ²ÎÊý£¨ÔÂ·Ý£©
+            call.addParameter(new QName(soapaction, "FMonth"), // ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ÝµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·Ý£ï¿½
                     org.apache.axis.encoding.XMLType.XSD_STRING,
                     javax.xml.rpc.ParameterMode.IN);
-            call.addParameter(new QName(soapaction, "FType"), // ÉèÖÃÒª´«µÝµÄ²ÎÊý£¨ÀàÐÍ£©
+            call.addParameter(new QName(soapaction, "FType"), // ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ÝµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
                     org.apache.axis.encoding.XMLType.XSD_STRING,
                     javax.xml.rpc.ParameterMode.IN);
 
-            call.setReturnType(org.apache.axis.encoding.XMLType.XSD_STRING);// £¨±ê×¼µÄÀàÐÍ£©
+            call.setReturnType(org.apache.axis.encoding.XMLType.XSD_STRING);// ï¿½ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
             call.setUseSOAPAction(true);
             call.setSOAPActionURI(soapaction + operationName);
 
-            ret = (String) call.invoke(params);// µ÷ÓÃ·½·¨²¢´«µÝ²ÎÊý
+            ret = (String) call.invoke(params);// ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½
             System.out.println(ret);
 
         } catch (Exception ex) {
